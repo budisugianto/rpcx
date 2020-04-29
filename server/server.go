@@ -347,9 +347,11 @@ func (s *Server) serveConn(conn net.Conn) {
 			conn.SetReadDeadline(t0.Add(s.readTimeout))
 		}
 
-		ctx := share.WithValue(context.Background(), RemoteConnContextKey, conn)
+		ctrx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		ctx := share.WithValue(ctrx, RemoteConnContextKey, conn)
 
 		req, err := s.readRequest(ctx, r)
+		cancel()
 		if err != nil {
 			if err == io.EOF {
 				log.Infof("client has closed this connection: %s", conn.RemoteAddr().String())
