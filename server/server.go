@@ -21,9 +21,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/budisugianto/rpcx/log"
-	"github.com/budisugianto/rpcx/protocol"
-	"github.com/budisugianto/rpcx/share"
+	"github.com/smallnest/rpcx/log"
+	"github.com/smallnest/rpcx/protocol"
+	"github.com/smallnest/rpcx/share"
 )
 
 // ErrServerClosed is returned by the Server's Serve, ListenAndServe after a call to Shutdown or Close.
@@ -347,11 +347,9 @@ func (s *Server) serveConn(conn net.Conn) {
 			conn.SetReadDeadline(t0.Add(s.readTimeout))
 		}
 
-		ctrx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		ctx := share.WithValue(ctrx, RemoteConnContextKey, conn)
+		ctx := share.WithValue(context.Background(), RemoteConnContextKey, conn)
 
 		req, err := s.readRequest(ctx, r)
-		cancel()
 		if err != nil {
 			if err == io.EOF {
 				log.Infof("client has closed this connection: %s", conn.RemoteAddr().String())
@@ -471,7 +469,7 @@ func (s *Server) readRequest(ctx context.Context, r io.Reader) (req *protocol.Me
 	// pool req?
 	req = protocol.GetPooledMsg()
 	err = req.Decode(r)
-	if err == io.EOF {
+	if err == nil { // io.EOF
 		return req, err
 	}
 	perr := s.Plugins.DoPostReadRequest(ctx, req, err)
