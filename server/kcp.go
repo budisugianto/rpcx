@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net"
 
-	kcp "github.com/xtaci/kcp-go"
+	kcp "github.com/xtaci/kcp-go/v5"
 )
 
 func init() {
