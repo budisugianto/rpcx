@@ -14,10 +14,10 @@ import (
 	"time"
 
 	"github.com/juju/ratelimit"
-	ex "github.com/smallnest/rpcx/errors"
-	"github.com/smallnest/rpcx/protocol"
-	"github.com/smallnest/rpcx/serverplugin"
-	"github.com/smallnest/rpcx/share"
+	ex "github.com/budisugianto/rpcx/errors"
+	"github.com/budisugianto/rpcx/protocol"
+	"github.com/budisugianto/rpcx/serverplugin"
+	"github.com/budisugianto/rpcx/share"
 )
 
 const (

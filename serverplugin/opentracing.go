@@ -7,9 +7,9 @@ import (
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/opentracing/opentracing-go/log"
-	"github.com/smallnest/rpcx/protocol"
-	"github.com/smallnest/rpcx/server"
-	"github.com/smallnest/rpcx/share"
+	"github.com/budisugianto/rpcx/protocol"
+	"github.com/budisugianto/rpcx/server"
+	"github.com/budisugianto/rpcx/share"
 )
 
 type OpenTracingPlugin struct{}

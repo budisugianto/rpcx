@@ -28,7 +28,7 @@ require (
 	github.com/rs/cors v1.7.0
 	github.com/rubyist/circuitbreaker v2.2.1+incompatible
 	github.com/smallnest/libkv-etcdv3-store v1.1.1
-	github.com/smallnest/rpcx v0.0.0-20200428104205-b633eed00350
+	github.com/budisugianto/rpcx v0.0.0-20200428104205-b633eed00350
 	github.com/smallnest/valkeyrie v0.0.0-20191030065038-13edeca3d026
 	github.com/soheilhy/cmux v0.1.4
 	github.com/tatsushid/go-fastping v0.0.0-20160109021039-d7bb493dee3e
